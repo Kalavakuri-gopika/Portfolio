@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalavakuri Gopika Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: #333;
+            overflow-x: hidden;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6c63ff, #835af1);
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: white;
+            margin: 20px 0;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        /* Navigation */
+        nav {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Enhanced Skills Section */
+        .skills-container {
+            padding: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #6c63ff, #ff9a9e);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #6c63ff;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .skill-level {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #6c63ff, #ff9a9e);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.2);
+        }
+
+        .skill-category {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #6c63ff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .project-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #6c63ff;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-card em {
+            color: #ff9a9e;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* Contact Links */
+        .contact-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            color: #6c63ff;
+            text-decoration: none;
+            position: relative;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #6c63ff, #ff9a9e);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #6c63ff, #835af1);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .footer-button {
+            display: inline-block;
+            background: linear-gradient(to right, #ff9a9e, #ff6f6f);
+            padding: 15px 30px;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .footer-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.2rem;
+            }
+            
+            .section-header {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .skill-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Kalavakuri Gopika</h1>
+            <p>Full Stack Developer | Cloud Enthusiast</p>
+            <nav>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="skills">
+        <h2 class="section-header">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <div class="skill-name">C/C++</div>
+                <div class="skill-category">Programming</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 90%"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <div class="skill-name">Python</div>
+                <div class="skill-category">Programming</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 85%"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">☕</div>
+                <div class="skill-name">Java</div>
+                <div class="skill-category">Programming</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 80%"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">☁️</div>
+                <div class="skill-name">IBM Cloud</div>
+                <div class="skill-category">Cloud Computing</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 75%"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <div class="skill-name">Azure</div>
+                <div class="skill-category">Cloud Computing</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 70%"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">⚛️</div>
+                <div class="skill-name">React.js</div>
+                <div class="skill-category">Frontend</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 85%"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">🎨</div>
+                <div class="skill-name">HTML/CSS</div>
+                <div class="skill-category">Frontend</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 90%"></div>
+                </div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">📱</div>
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-category">Frontend</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-header">Projects</h2>
+        <div class="project-card">
+            <h3>Talk Wheel</h3>
+            <h4>Voice-Controlled Robotic Chassis</h4>
+            <p><em>Technologies:</em> C++, ArduinoIDE, Bluetooth Recognition API</p>
+        </div>
+
+        <div class="project-card">
+            <h3>ML-Based Pattern Detection</h3>
+            <p>Identified design patterns in object-oriented programs using Python code and Java source code datasets with neural networks (ANN).</p>
+            <p><em>Technologies:</em> Python, TensorFlow, Keras</p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-header">Experience</h2>
+        <div class="project-card">
+            <h3>Full Stack Web Development Intern</h3>
+            <p><em>AICTE Innovate Intern (July 2024 - September 2024)</em></p>
+            <p>Technologies Used: HTML, CSS, JavaScript, Django (Framework), MongoDB (Database)</p>
+            <p>Programming Language: Python</p>
+            <p>Developed a creative and user-friendly web application to track birthdays and anniversary dates.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-header">Contact</h2>
+        <p><a href="mailto:kalavakurigopika@gmail.com" class="contact-link">kalavakurigopika@gmail.com</a></p>
+        <p><a href="https://www.linkedin.com/in/kalavakuri-gopika-0b528929b" class="contact-link">LinkedIn Profile</a></p>
+        <p><a href="https://github.com/Kalavakuri-gopika" class="contact-link">GitHub Profile</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Kalavakuri Gopika | <a href="#" class="contact-link">Back to Top</a></p>
+        <a href="#skills" class="footer-button">Explore More</a>
+    </footer>
+</body>
+</html>
